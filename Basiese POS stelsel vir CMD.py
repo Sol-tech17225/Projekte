@@ -49,6 +49,3 @@ def pos_system():
 
 # Call the main program
 pos_system()
-
-# Roep die hoofprogram aan
-pos_stelsel()
