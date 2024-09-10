@@ -1,51 +1,54 @@
-# Funksie om 'n item by die lys te voeg
-def voeg_item_by(lys, item, prys):
-    lys.append((item, prys))
+# Function to add an item to the list
+def add_item_to_list(lst, item, price):
+    lst.append((item, price))
 
-# Funksie om die lys van items te vertoon
-def vertoon_lys(lys):
-    totaal = 0
-    for item, prys in lys:
-        print(f"{item}   R{prys:.2f}")
-        totaal += prys
+# Function to display the list of items
+def display_list(lst):
+    total = 0
+    for item, price in lst:
+        print(f"{item}   R{price:.2f}")
+        total += price
     print("---------------")
-    print(f"Totaal R{totaal:.2f}")
+    print(f"Total R{total:.2f}")
 
-# Funksie om die lys skoon te maak
-def maak_skoon(lys):
-    lys.clear()
+# Function to clear the list
+def clear_list(lst):
+    lst.clear()
 
-# Hoofprogram wat die POS-stelsel bestuur
-def pos_stelsel():
+# Main program that manages the POS system
+def pos_system():
     items = []
     while True:
-        print("Kies operasie:")
-        print("1. Voeg item by")
-        print("2. Vertoon lys")
-        print("3. Maak skoon")
-        print("4. Verlaat")
+        print("Choose operation:")
+        print("1. Add item")
+        print("2. Display list")
+        print("3. Clear list")
+        print("4. Exit")
 
-        # Neem die gebruiker se keuse
-        keuse = input("Voer keuse in (1/2/3/4): ")
+        # Get the user's choice
+        choice = input("Enter choice (1/2/3/4): ")
 
-        if keuse == '1':
-            item = input("Voer item naam in: ")
+        if choice == '1':
+            item = input("Enter item name: ")
             try:
-                prys = float(input("Voer item prys in: "))
+                price = float(input("Enter item price: "))
             except ValueError:
-                print("Ongeldige invoer. Voer asseblief 'n getal in.")
+                print("Invalid input. Please enter a number.")
                 continue
-            voeg_item_by(items, item, prys)
-        elif keuse == '2':
-            vertoon_lys(items)
-        elif keuse == '3':
-            maak_skoon(items)
-            print("Lys is skoongemaak.")
-        elif keuse == '4':
-            print("Verlaat die POS-stelsel.")
+            add_item_to_list(items, item, price)
+        elif choice == '2':
+            display_list(items)
+        elif choice == '3':
+            clear_list(items)
+            print("List has been cleared.")
+        elif choice == '4':
+            print("Exiting the POS system.")
             break
         else:
-            print("Ongeldige keuse. Probeer asseblief weer.")
+            print("Invalid choice. Please try again.")
+
+# Call the main program
+pos_system()
 
 # Roep die hoofprogram aan
 pos_stelsel()
