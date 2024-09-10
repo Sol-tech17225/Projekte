@@ -1,39 +1,38 @@
-# Funksie om twee getalle op te tel
 def add(x, y):
     return x + y
 
-# Funksie om twee getalle af te trek
 def subtract(x, y):
     return x - y
 
-# Funksie om twee getalle te vermenigvuldig
 def multiply(x, y):
     return x * y
 
-# Funksie om twee getalle te deel
 def divide(x, y):
+    if y == 0:
+        return "Error! Division by zero."
     return x / y
 
-# Hoofprogram wat die sakrekenaar bestuur
+def clear():
+    print("\033[H\033[J", end="")  # This clears the console output
+
 def calculator():
     while True:
-        print("Kies operasie:")
-        print("1. Plus (+)")
-        print("2. Minus (-)")
-        print("3. Maal (*)")
-        print("4. Deel (/)")
-        print("5. Verlaat")
+        print("Select operation:")
+        print("1. Add")
+        print("2. Subtract")
+        print("3. Multiply")
+        print("4. Divide")
+        print("5. Clear")
+        print("6. Exit")
 
-        # Neem die gebruiker se keuse
-        choice = input("Voer keuse in (1/2/3/4/5): ")
+        choice = input("Enter choice (1/2/3/4/5/6): ")
 
-        # Kontroleer of die keuse geldig is
-        if choice in ('1', '2', '3', '4'):
+        if choice in ['1', '2', '3', '4']:
             try:
-                num1 = float(input("Voer eerste getal in: "))
-                num2 = float(input("Voer tweede getal in: "))
+                num1 = float(input("Enter first number: "))
+                num2 = float(input("Enter second number: "))
             except ValueError:
-                print("Ongeldige invoer. Voer asseblief 'n getal in.")
+                print("Invalid input. Please enter a number.")
                 continue
 
             if choice == '1':
@@ -43,15 +42,14 @@ def calculator():
             elif choice == '3':
                 print(f"{num1} * {num2} = {multiply(num1, num2)}")
             elif choice == '4':
-                if num2 != 0:
-                    print(f"{num1} / {num2} = {divide(num1, num2)}")
-                else:
-                    print("Kan nie deur nul deel nie.")
+                print(f"{num1} / {num2} = {divide(num1, num2)}")
         elif choice == '5':
-            print("Verlaat die sakrekenaar.")
+            clear()
+            print("Output is cleared.")
+        elif choice == '6':
+            print("Exiting the calculator.")
             break
         else:
-            print("Ongeldige keuse. Probeer asseblief weer.")
+            print("Invalid choice. Please try again.")
 
-# Roep die hoofprogram aan
 calculator()
